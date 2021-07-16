@@ -12,6 +12,9 @@ body {
     flex-wrap: wrap;
     justify-content: space-between;
     margin-top: 1em;
+    background-color: white;
+    border-bottom: solid #C6C6C6;
+    padding-bottom: 1em;
 }
 
 .header_nav {
@@ -27,5 +30,6 @@ body {
 }
 
 a {
-    text-decoration: underline none;
+    text-decoration: none;
+    color: black;
 }
