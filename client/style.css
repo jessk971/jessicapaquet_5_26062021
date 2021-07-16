@@ -6,7 +6,7 @@ body {
     width: 250px;
 }
 
-.header_container {
+#header_container {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -32,4 +32,24 @@ body {
 a {
     text-decoration: none;
     color: black;
+}
+
+#container {
+    background: linear-gradient(to right, rgba(212, 129, 58), rgba(179, 111, 150), rgba(152, 96, 227));
+    width: 100%;
+    margin: 0;
+}
+
+#container h1 {
+    margin: 0;
+}
+
+#footer_container {
+    background-color: white;
+    border-top: solid #C6C6C6;
+    padding-top: 1em;
+}
+
+.footer_title {
+    margin-left: 1em;
 }
