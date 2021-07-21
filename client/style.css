@@ -55,3 +55,10 @@ a {
     margin-left: 1em;
     margin-top: 0;
 }
+
+#label {
+    background: linear-gradient(to right, rgba(212, 129, 58), rgba(179, 111, 150), rgba(152, 96, 227));
+    width: 100%;
+    margin: 0;
+    padding-bottom: 1em;
+}

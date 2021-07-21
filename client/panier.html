@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+    <link rel="icon" type="image/png" href="images/logo.png">
+
+    <title>Orinoco - Mon panier</title>
+
+</head>
+
+<body>
+
+    <header class="header">
+        <div id="header_container">
+            <div class="header_logo">
+                <img src="images/logo.png" alt="logo">
+            </div>
+            <nav class="header_nav">
+
+                <div class="nav_title">
+                    <a href="index.html" class="home">Accueil</a>
+
+                </div>
+
+                <div class="nav_title">
+                    <a href="index.html" class="produit">Produits</a>
+
+                </div>
+
+                <div class="nav_title">
+                    <a href="panier.html" class="panier"><i class="fas fa-shopping-basket" style="font-size: medium;"></i></a>
+                    <div class="shop">
+
+                    </div>
+
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section id="label">
+        <!--message panier vide -->
+        <div class="message"></div>
+
+        <!--Formulaire de commande -->
+        <form id="form">
+            <div class="form_row">
+
+                <!--Firstname-->
+                <div class="first">
+                    <label for="firstname" class="coordinated">Prénom</label>
+                    <input type="text" class="form-coordinated" id="firstname" placeholder="First Name" required>
+
+                </div>
+                <!--lastname-->
+                <div class="last">
+                    <label for="lastname" class="coordinated">Nom</label>
+                    <input type="text" class="form-coordinated" id="lastname" placeholder="Last Name" required>
+                </div>
+            </div>
+
+            <div class="form_row">
+
+                <!--Adress-->
+                <div class="adress">
+                    <label for="address" class="coordinated">Adresse</label>
+                    <input type="text" class="form-coordinated" id="Address" placeholder="Address" required>
+
+                </div>
+
+
+
+
+
+
+
+
+        </form>
+
+
+
+    </section>
+
+    <footer>
+        <div id="footer_container">
+            <nav class="nav_footer">
+
+                <div class="footer_title">
+
+                    <a href="#" class="mention">Mentions légales</a>
+                </div>
+
+                <div class="footer_title">
+
+                    <a href="#" class="politique">Politique de confidentialité</a>
+                </div>
+
+                <div class="footer_title">
+
+                    <a href="#" class="condition">Conditions générales de vente</a>
+
+                </div>
+
+                <div class="footer_title">
+
+                    <a href="mailto:email@exemple.com?subject=HTMLlink" class="contact">Contact</a>
+
+                </div>
+
+
+            </nav>
+        </div>
+
+    </footer>
+</body>
+
+</html>
