@@ -34,14 +34,14 @@ a {
     color: black;
 }
 
-#container {
+#teddies-list {
     background: linear-gradient(to right, rgba(212, 129, 58), rgba(179, 111, 150), rgba(152, 96, 227));
     width: 100%;
     margin: 0;
     padding-bottom: 1em;
 }
 
-#container h1 {
+#teddies-list h1 {
     margin: 0;
 }
 
