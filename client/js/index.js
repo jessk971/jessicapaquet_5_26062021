@@ -42,6 +42,12 @@ function createProductTeddies(teddies) {
         descriptionTeddie.className.add("product-description");
         descriptionTeddie.textContent = teddies[i].description;
 
+        //couleurs//
+        let colorsSelect = document.createElement("div");
+        divCardProduct.appendChild(colorsSelect);
+        colorsSelect.className.add("colors-teddies");
+        colorsSelect.textContent = teddies[i].colors;
+
         //div prix et bouton//
 
         let divSelectPrice = document.createElement("div");
