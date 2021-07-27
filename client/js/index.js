@@ -3,16 +3,18 @@ fetch('http://localhost:3000/api/teddies')
     .then(res => res.json())
     .then(data => console.log(data));
 
+
 //liste des produit//
 
 function createProductTeddies(teddies) {
     let divParentParent = document.createElement("div");
     const teddiesList = document.getElementById("teddies-list");
     teddiesList.appendChild(divParentParent);
-    divParent.className.add("product");
+    divParentParent.className.add("product");
 
     for (let i = 0; i < teddies.length; i++) {
-        let (divParent) = document.createElement("div");
+
+        let divParent = document.createElement("div");
         divParentParent.appendChild(divParent);
         divParent.className.add("product-article");
 
@@ -73,3 +75,5 @@ async function getTeddies() {
         console.log(e);
     }
 }
+
+getTeddies()
