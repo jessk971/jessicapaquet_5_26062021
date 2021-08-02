@@ -1,5 +1,6 @@
 body {
     margin: 0;
+    font-family: 'Raleway', sans-serif;
 }
 
 .header_logo img {
@@ -11,8 +12,8 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin-top: 1em;
-    background-color: white;
+    padding-top: 1em;
+    background: linear-gradient(to left, rgba(250, 211, 231), rgba(252, 226, 239), rgba(255, 255, 255));
     border-bottom: solid #C6C6C6;
     padding-bottom: 1em;
 }
@@ -35,18 +36,14 @@ a {
 }
 
 #teddies-list {
-    background: linear-gradient(to right, rgba(212, 129, 58), rgba(179, 111, 150), rgba(152, 96, 227));
     width: 100%;
     margin: 0;
     padding-bottom: 1em;
-}
-
-#teddies-list h1 {
-    margin: 0;
+    background: white;
 }
 
 #footer_container {
-    background-color: white;
+    background: linear-gradient(to left, rgba(250, 211, 231), rgba(252, 226, 239), rgba(255, 255, 255));
     border-top: solid #C6C6C6;
     padding-top: 1em;
 }
@@ -54,6 +51,7 @@ a {
 .footer_title {
     margin-left: 1em;
     margin-top: 0;
+    font-weight: 900;
 }
 
 #label {
@@ -61,4 +59,89 @@ a {
     width: 100%;
     margin: 0;
     padding-bottom: 1em;
+}
+
+.product-article {
+    width: 450px;
+    background: linear-gradient(to right, rgba(250, 211, 231), rgba(252, 226, 239), rgba(255, 255, 255));
+    border-radius: 20px;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    box-shadow: 2px 2px 12px rgb(212 211 211);
+    position: relative;
+    cursor: pointer;
+    text-align: center;
+}
+
+.product-article img {
+    width: 160px;
+    height: 160px;
+    float: left;
+    border-radius: 20px;
+    border: solid 5px;
+    border-color: white;
+    margin-left: 1em;
+    margin-top: 1em;
+}
+
+.product-article:hover {
+    box-shadow: 1px 2px 20px grey;
+}
+
+.product-description {
+    margin-right: 1em;
+}
+
+.title-product {
+    border-bottom: solid;
+    border-width: 5px;
+    border-bottom-color: white;
+    margin-bottom: 0.5em;
+}
+
+.product-btn {
+    border: solid 0px white;
+    text-align: center;
+    float: right;
+    width: 100%;
+    margin-top: 0;
+    border-radius: 0px 0px 20px 20px;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    margin: 0;
+}
+
+.product-btn:hover {
+    background: linear-gradient(to right, rgba(212, 129, 58), rgba(179, 111, 150), rgba(152, 96, 227));
+    transition: 200ms linear;
+    color: white;
+}
+
+img {
+    object-fit: cover;
+}
+
+.product {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding-top: 1em;
+}
+
+.title-site h1 {
+    text-align: center;
+    font-family: 'Architects Daughter', cursive;
+    font-size: 80px;
+    color: rgba(250, 211, 231);
+    text-shadow: 2px 2px 9px rgb(188 188 188);
+    margin-bottom: 1em;
+}
+
+.title-site {
+    margin-left: 1em;
+    line-height: 0.5em;
+}
+
+.teddie-price {
+    margin-top: 0.5em;
 }
