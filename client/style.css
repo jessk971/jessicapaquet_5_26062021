@@ -30,6 +30,10 @@ body {
     margin-right: 1em;
 }
 
+.nav_title a:hover {
+    color: white;
+}
+
 a {
     text-decoration: none;
     color: black;
@@ -52,13 +56,6 @@ a {
     margin-left: 1em;
     margin-top: 0;
     font-weight: 900;
-}
-
-#label {
-    background: linear-gradient(to right, rgba(212, 129, 58), rgba(179, 111, 150), rgba(152, 96, 227));
-    width: 100%;
-    margin: 0;
-    padding-bottom: 1em;
 }
 
 .product-article {
@@ -144,4 +141,8 @@ img {
 
 .teddie-price {
     margin-top: 0.5em;
+}
+
+.title-basket h2 {
+    text-align: center;
 }
