@@ -1,7 +1,21 @@
 console.log("test")
-fetch('http://localhost:3000/api/teddies')
-    .then(res => res.json())
-    .then(data => createProductTeddies(data));
+async function getTeddies() {
+    try {
+        let response = await fetch("http://localhost:3000/api/teddies");
+        if (response.ok) {
+            let teddies = await response.json();
+            console.log(teddies);
+            createProductTeddies(teddies)
+
+        } else {
+            console.error('Retour du serveur : ', response.status)
+        }
+    } catch (e) {
+        console.log(e);
+    }
+}
+getTeddies();
+
 
 
 //liste des produit//
@@ -75,14 +89,53 @@ function createProductTeddies(teddies) {
         teddiePrice.classList.add("teddie-price");
         teddiePrice.textContent = teddies[i].price + ' $';
 
-        let divProductBtn = document.createElement("a");
-        divParent.appendChild(divProductBtn);
-        divProductBtn.classList.add("product-btn");
-        divProductBtn.textContent = "Ajouter au panier";
+        let buttonBuy = document.createElement("a");
+        divSelectPrice.appendChild(buttonBuy);
+        buttonBuy.classList.add("btn");
+
+        let buttonBasketBuy = document.createElement("button");
+        buttonBuy.appendChild(buttonBasketBuy);
+        buttonBasketBuy.classList.add("product-btn");
+        buttonBasketBuy.textContent = "Ajouter au panier";
 
 
+        buttonBasketBuy.addEventListener('click', function(event) {
+                event.preventDefault();
 
+                let teddiesChoose = {
+                    teddiesName: teddies[i].name,
+                    teddiesColor: select.value,
+                    teddiesPrice: teddies[i].price,
+                    quantity: 1,
+                    teddiesImg: teddies[i].imageUrl,
+                };
+                console.log(teddiesChoose);
 
+                let storedTeddies = JSON.parse(localStorage.getItem('teddies-basket'));
+                const teddiesColor = select.value;
+                if (storedTeddies) {
+                    storedTeddies.push(teddiesChoose);
+                    localStorage.setItem('teddies-basket', JSON.stringify(storedTeddies));
+                    console.log(storedTeddies);
+
+                    if (window.confirm(teddies[i].name + " " + teddiesColor + ' a bien été ajouté. Souhaitez vous consulter votre panier ?')) {
+                        window.location.href = "panier.html";
+                    } else {
+                        window.location.href = "index.html";
+                    }
+                } else {
+                    storedTeddies = [];
+                    storedTeddies.push(teddiesChoose);
+                    localStorage.setItem('teddies-basket', JSON.stringify(storedTeddies));
+                    console.log(storedTeddies);
+                    if (window.confirm(teddies[i].name + " " + teddiesColor + ' a bien été ajouté. Souhaitez vous consulter votre panier ?')) {
+                        window.location.href = "panier.html";
+                    } else {
+                        window.location.href = "index.html";
+                    }
+                }
+            }
+
+        );
     }
-
 }
