@@ -152,7 +152,7 @@ a {
     margin-bottom: 0.5em;
 }
 
-button {
+.btn button {
     background: linear-gradient(to right, rgba(250, 211, 231), rgba(252, 226, 239), rgba(255, 255, 255));
     border: solid 0px white;
     text-align: center;
@@ -220,6 +220,7 @@ img {
     margin-left: auto;
     margin-right: auto;
     width: 60%;
+    margin-bottom: 2em;
 }
 
 .basket {
@@ -237,6 +238,13 @@ img {
 .teddies_cart p {
     padding: 1em 1em;
     margin: 0;
+}
+
+p.total {
+    text-align: end;
+    margin-top: 2em;
+    margin-bottom: -1em;
+    font-weight: 800;
 }
 
 .a_teddy {
@@ -260,6 +268,7 @@ img {
     padding: 0;
     background: 0;
     margin-top: -1.5em;
+    border: none;
 }
 
 .teddies_price i {
@@ -280,4 +289,68 @@ img {
     margin-bottom: 1.5em;
     box-shadow: 2px 2px 12px rgb(212 211 211);
     border-radius: 20px;
+}
+
+#teddies-basket form h3 {
+    text-align: center;
+    border-bottom: solid white;
+    padding-bottom: 0.5em;
+    border-width: 5px;
+}
+
+#teddies-basket form {
+    background: linear-gradient(to left, rgba(250, 211, 231), rgba(252, 226, 239), rgba(255, 255, 255));
+    box-shadow: 2px 2px 12px rgb(212 211 211);
+    border-radius: 20px;
+    padding-top: 1em;
+}
+
+#teddies-basket label {
+    padding-left: 1em;
+}
+
+.div_name {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 1em;
+    margin-right: 3.5em;
+}
+
+.div_adress {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 1em;
+    margin-right: 3.5em;
+}
+
+.div_zip {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 1em;
+    margin-right: 3.5em;
+}
+
+#teddies-basket input {
+    border-radius: 7px;
+    border: transparent;
+}
+
+form button {
+    background: linear-gradient(to left, rgba(250, 211, 231), rgba(252, 226, 239), rgba(255, 255, 255));
+    border: solid 0px white;
+    border-radius: 0px 0px 20px 20px;
+    font-weight: 800;
+    margin-top: 1em;
+    padding-top: 1em;
+    width: 100%;
+    padding-bottom: 1em;
+}
+
+form button:hover {
+    background: linear-gradient(to right, rgba(212, 129, 58), rgba(179, 111, 150), rgb(69, 37, 110));
+    transition: 200ms linear;
+    color: white;
 }

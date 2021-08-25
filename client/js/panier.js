@@ -3,8 +3,8 @@ fetch('http://localhost:3000/api/teddies')
     .then(res => res.json())
     .then(data => createBasketTeddies(data));
 
-let storeTeddies = JSON.parse(localStorage.getItem('teddies-basket'));
-console.log(storeTeddies);
+let storedTeddies = JSON.parse(localStorage.getItem('teddies-basket'));
+console.log(storedTeddies);
 
 function createBasketTeddies(teddies) {
     let divParentParent = document.createElement("div");
@@ -19,9 +19,9 @@ function createBasketTeddies(teddies) {
 
     const teddiesTittle = document.createElement("h3");
     teddiesDivCart.appendChild(teddiesTittle);
-    teddiesTittle.textContent = "Teddies:";
+    teddiesTittle.textContent = "Teddies";
 
-    if (storeTeddies == null || storeTeddies.length === 0) {
+    if (storedTeddies == null || storedTeddies.length === 0) {
         // si le panier est vide 
         const cart = document.createElement("p");
         teddiesDivCart.appendChild(cart);
@@ -31,7 +31,7 @@ function createBasketTeddies(teddies) {
     } else {
         // si produits dans le panier : récupération des éléments du panier
         let i = 0;
-        for (storeTeddy of storeTeddies) {
+        for (storedTeddy of storedTeddies) {
             const aTeddy = document.createElement('div');
             teddiesDivCart.appendChild(aTeddy);
             aTeddy.className = "a_teddy";
@@ -39,7 +39,7 @@ function createBasketTeddies(teddies) {
             const teddiesCart = document.createElement("p");
             aTeddy.appendChild(teddiesCart);
             teddiesCart.src = teddies[i].imageUrl;
-            teddiesCart.textContent = storeTeddy.quantity + " " + storeTeddy.teddiesName + " , " + storeTeddy.teddiesColor;
+            teddiesCart.textContent = storedTeddy.quantity + " " + storedTeddy.teddiesName + " , " + storedTeddy.teddiesColor;
 
             const teddiesPrice = document.createElement('div');
             aTeddy.appendChild(teddiesPrice);
@@ -48,7 +48,7 @@ function createBasketTeddies(teddies) {
 
             const price = document.createElement('p');
             teddiesPrice.appendChild(price);
-            price.textContent = storeTeddy.teddiesPrice + "$"
+            price.textContent = storedTeddy.teddiesPrice + "$"
 
             // création bouton supprimer 
 
@@ -71,11 +71,11 @@ function createBasketTeddies(teddies) {
 
                 //on supprime l'article du localStorage
 
-                storeTeddies.splice(id, 1);
+                storedTeddies.splice(id, 1);
 
-                // enregistrement  nouveau localStorage
+                //nouveau localStorage
 
-                localStorage.setItem('teddies-basket', JSON.stringify(storeTeddies));
+                localStorage.setItem('teddies-basket', JSON.stringify(storedTeddies));
                 JSON.parse(localStorage.getItem('teddies-basket'));
 
                 alert('Cet article a bien été supprimé !');
@@ -84,8 +84,8 @@ function createBasketTeddies(teddies) {
         };
         // total de la commande 
         let totalPrice = []
-        for (storeTeddy of storeTeddies) {
-            let article = storeTeddy.teddiesPrice;
+        for (storedTeddy of storedTeddies) {
+            let article = storedTeddy.teddiesPrice;
             totalPrice.push(article);
         };
         const reducer = (accumulator, currentValue) => accumulator + currentValue;
@@ -97,18 +97,39 @@ function createBasketTeddies(teddies) {
         total.className = 'total';
         total.textContent = "Total commande = " + globalPrice + " $";
 
-        //création du formulaire de commande
+        //validation nom prénom et ville du formulaire
+
+        function valid(value) {
+            return /^[A-Z-a-z\s]{3,40}$/.test(value);
+        };
+
+        //validation adresse code postal du formulaire 
+
+        function validAddressZip(value) {
+            return /^[A-Z-a-z-0-9\s]{5,80}$/.test(value)
+        };
+
+        //validation email 
+        function validEmail(value) {
+            return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(value)
+        };
+
+        // formulaire de commande
         const form = document.createElement('form');
         teddiesBasket.appendChild(form);
         form.classList.add = "formulaire";
 
         const formTitle = document.createElement('h3');
         form.appendChild(formTitle);
-        formTitle.textContent = "Coordonnées de livraison ";
+        formTitle.textContent = "Adresse de livraison ";
+
+        const divName = document.createElement('div');
+        form.appendChild(divName);
+        divName.className = "div_name";
 
         const firstName = document.createElement('div');
-        form.appendChild(firstName);
-        firstName.className = "name";
+        divName.appendChild(firstName);
+        firstName.className = "delivery1";
 
         const labelFirstName = document.createElement('label');
         firstName.appendChild(labelFirstName);
@@ -119,11 +140,20 @@ function createBasketTeddies(teddies) {
         firstName.appendChild(inputFirstName);
         inputFirstName.setAttribute('type', 'text');
         inputFirstName.setAttribute('class', 'name');
-        inputFirstName.name = "Prénom";
+        inputFirstName.name = "Prénom"
+        inputFirstName.required = true;
+
+        inputFirstName.addEventListener("change", function(event) {
+            if (valid(inputFirstName.value)) {} else {
+                alert("Aucun chiffre ou symbole n'est accepté.")
+                event.preventDefault()
+
+            }
+        });
 
         const lastName = document.createElement('div');
-        form.appendChild(lastName);
-        lastName.className = 'name';
+        divName.appendChild(lastName);
+        lastName.className = 'delivery1';
 
         const labelLastName = document.createElement('label');
         lastName.appendChild(labelLastName);
@@ -135,10 +165,24 @@ function createBasketTeddies(teddies) {
         inputLastName.setAttribute('type', 'text');
         inputLastName.setAttribute('class', 'name');
         inputLastName.name = "Nom"
+        inputLastName.required = true;
+
+        inputLastName.addEventListener("change", function(event) {
+            if (valid(inputLastName.value)) {} else {
+                alert("Aucun chiffre ou symbole n'est accepté.")
+                event.preventDefault()
+            }
+        });
+
+
+
+        const divAdress = document.createElement('div');
+        form.appendChild(divAdress);
+        divAdress.className = "div_adress";
 
         const address = document.createElement('div');
-        form.appendChild(address);
-        address.className = 'name';
+        divAdress.appendChild(address);
+        address.className = 'delivery2';
 
         const labelAdress = document.createElement('label');
         address.appendChild(labelAdress);
@@ -150,8 +194,170 @@ function createBasketTeddies(teddies) {
         inputAddress.setAttribute('type', 'text');
         inputAddress.setAttribute('class', 'name');
         inputAddress.name = "Adresse"
+        inputAddress.required = true;
+
+        inputAddress.addEventListener("change", function(event) {
+            if (validAddressZip(inputAddress.value)) {
+
+
+            } else {
+                event.preventDefault()
+                alert("Aucun symbole n'est accepté.");
+            }
+        });
+
+        const city = document.createElement('div');
+        divAdress.appendChild(city);
+        city.className = 'delivery2';
+
+        const labelCity = document.createElement('label');
+        city.appendChild(labelCity);
+        labelCity.setAttribute('for', 'ville');
+        labelCity.textContent = 'Ville : ';
+
+        const inputCity = document.createElement('input');
+        city.appendChild(inputCity);
+        inputCity.setAttribute('type', 'text');
+        inputCity.setAttribute('class', 'name');
+        inputCity.name = "Ville"
+        inputCity.required = true;
+
+        inputCity.addEventListener("change", function(event) {
+            if (valid(inputCity.value)) {
+
+
+            } else {
+                alert("Aucun chiffre ou symbole n'est accepté.")
+                event.preventDefault()
+            }
+        });
+
+        const divZip = document.createElement('div');
+        form.appendChild(divZip);
+        divZip.className = "div_zip";
+
+        const zip = document.createElement('div');
+        divZip.appendChild(zip);
+        zip.className = 'delivery3';
+
+        const labelZip = document.createElement('label');
+        zip.appendChild(labelZip);
+        labelZip.setAttribute('for', 'code postal');
+        labelZip.textContent = 'Code Postal : ';
+
+        const inputZip = document.createElement('input');
+        zip.appendChild(inputZip);
+        inputZip.setAttribute('type', 'text');
+        inputZip.setAttribute('class', 'name');
+        inputZip.name = "Code Postal"
+        inputZip.required = true;
+
+        inputZip.addEventListener("change", function(event) {
+            if (validAddressZip(inputZip.value)) {} else {
+                event.preventDefault()
+                alert("Aucun symbole n'est accepté.");
+            }
+        });
+
+        const mail = document.createElement('div');
+        divZip.appendChild(mail);
+        mail.className = 'delivery3';
+
+        const labelMail = document.createElement('label');
+        mail.appendChild(labelMail);
+        labelMail.setAttribute('for', 'email');
+        labelMail.textContent = 'E-mail : ';
+
+        const inputMail = document.createElement('input');
+        mail.appendChild(inputMail);
+        inputMail.setAttribute('type', 'email');
+        inputMail.setAttribute('class', 'name');
+        inputMail.name = "Adresse mail"
+        inputMail.required = true;
+
+        inputMail.addEventListener("change", function(event) {
+            if (validEmail(inputMail.value)) {} else {
+                event.preventDefault()
+                alert("Veuillez saisir une adresse e-mail valide (exemple : dupond@gmail.com).");
+            }
+        });
+
+        const divConfirm = document.createElement('div')
+        form.appendChild(divConfirm);
+        divConfirm.className = 'div_confirm'
+
+
+        const confirm = document.createElement('button');
+        divConfirm.appendChild(confirm);
+        confirm.className = 'confirm';
+        confirm.textContent = 'CONFIRMER';
+
+        confirm.addEventListener("click", function(event) {
+            if (valid(inputFirstName.value) && valid(inputLastName.value) && validAddressZip(inputAddress.value) && validAddressZip(inputZip.value) && valid(inputCity.value) && validEmail(inputMail.value)) {
+                event.preventDefault();
+
+                // envoie du prix total au localStorage
+                localStorage.setItem('globalPrice', globalPrice);
+                const stockage = localStorage.getItem('globalPrice');
+                console.log(stockage);
+
+                //Création de l'objet "contact"
+                let contact = {
+                    firstName: inputFirstName.value,
+                    lastName: inputLastName.value,
+                    address: inputAddress.value,
+                    city: inputCity.value,
+                    email: inputMail.value,
+                }
+                console.log(contact);
+
+                // création du tableau products (id des oursons du panier)
+                let productTeddies = [];
+                for (storedTeddy of storedTeddies) {
+                    let teddiesId = storedTeddy.teddyId;
+                    productTeddies.push((teddiesId));
+                }
+                console.log(productTeddies);
+
+                let sendTeddies = {
+                    contact,
+                    productTeddies,
+                }
+                console.log(sendTeddies);
+
+
+
+                // envoie des données au serveur
+                const post = async function(data) {
+
+                    let response = await fetch('http://localhost:3000/api/teddies/order', {
+                        method: 'POST',
+                        body: JSON.stringify(data),
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    });
+                    if (response.ok) {
+                        let data = await response.json();
+                        console.log(data.orderId);
+                        localStorage.setItem("responseOder", data.orderId);
+                        window.location.href = "confirmation.html"
+                        localStorage.removeItem("teddies-basket");
+
+                    } else {
+                        event.preventDefault();
+                        console.error('Retour du serveur : ', response.status);
+                        alert('Erreur rencontrée : ' + response.status);
+
+
+                    };
+                }
+                post(sendTeddies);
+            }
+
+        });
+
 
 
     }
-
 }

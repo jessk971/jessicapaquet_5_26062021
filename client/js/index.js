@@ -113,27 +113,22 @@ function createProductTeddies(teddies) {
 
                 let storedTeddies = JSON.parse(localStorage.getItem('teddies-basket'));
                 const teddiesColor = select.value;
-                if (storedTeddies) {
-                    storedTeddies.push(teddiesChoose);
-                    localStorage.setItem('teddies-basket', JSON.stringify(storedTeddies));
-                    console.log(storedTeddies);
-
-                    if (window.confirm(teddies[i].name + " " + teddiesColor + ' a bien été ajouté. Souhaitez vous consulter votre panier ?')) {
-                        window.location.href = "panier.html";
-                    } else {
-                        window.location.href = "index.html";
-                    }
-                } else {
-                    storedTeddies = [];
-                    storedTeddies.push(teddiesChoose);
-                    localStorage.setItem('teddies-basket', JSON.stringify(storedTeddies));
-                    console.log(storedTeddies);
-                    if (window.confirm(teddies[i].name + " " + teddiesColor + ' a bien été ajouté. Souhaitez vous consulter votre panier ?')) {
-                        window.location.href = "panier.html";
-                    } else {
-                        window.location.href = "index.html";
-                    }
+                if (storedTeddies == undefined) {
+                    storedTeddies = []
                 }
+
+                storedTeddies.push(teddiesChoose);
+                localStorage.setItem('teddies-basket', JSON.stringify(storedTeddies));
+                console.log(storedTeddies);
+
+                if (window.confirm(teddies[i].name + " " + teddiesColor + ' a bien été ajouté. Souhaitez vous consulter votre panier ?')) {
+                    window.location.href = "panier.html";
+                } else {
+                    window.location.href = "index.html";
+                }
+
+
+
             }
 
         );
