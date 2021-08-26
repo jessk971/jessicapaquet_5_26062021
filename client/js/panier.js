@@ -310,18 +310,19 @@ function createBasketTeddies(teddies) {
                     email: inputMail.value,
                 }
                 console.log(contact);
+                localStorage.setItem('contact', JSON.stringify(contact));
 
                 // création du tableau products (id des oursons du panier)
-                let productTeddies = [];
+                let products = [];
                 for (storedTeddy of storedTeddies) {
-                    let teddiesId = storedTeddy.teddyId;
-                    productTeddies.push((teddiesId));
+                    let productsId = storedTeddy.teddyId;
+                    products.push((productsId));
                 }
-                console.log(productTeddies);
+                console.log(products);
 
                 let sendTeddies = {
                     contact,
-                    productTeddies,
+                    products,
                 }
                 console.log(sendTeddies);
 
@@ -329,31 +330,37 @@ function createBasketTeddies(teddies) {
 
                 // envoie des données au serveur
                 const post = async function(data) {
+                    try {
+                        let response = await fetch('http://localhost:3000/api/teddies/order', {
+                            method: 'POST',
+                            body: JSON.stringify(data),
+                            headers: {
+                                'Content-Type': 'application/json'
+                            }
+                        });
+                        if (response.ok) {
+                            let data = await response.json();
+                            console.log(data.orderId);
+                            localStorage.setItem("responseOrder", data.orderId);
+                            window.location.href = "confirmation.html"
+                            localStorage.removeItem("teddies-basket");
 
-                    let response = await fetch('http://localhost:3000/api/teddies/order', {
-                        method: 'POST',
-                        body: JSON.stringify(data),
-                        headers: {
-                            'Content-Type': 'application/json'
+                        } else {
+                            event.preventDefault();
+                            console.error('Retour du serveur : ', response.status);
+                            alert('Erreur rencontrée : ' + response.status);
+
                         }
-                    });
-                    if (response.ok) {
-                        let data = await response.json();
-                        console.log(data.orderId);
-                        localStorage.setItem("responseOder", data.orderId);
-                        window.location.href = "confirmation.html"
-                        localStorage.removeItem("teddies-basket");
+                    } catch (error) {
+                        alert("Erreur : " + error);
+                    }
+                };
 
-                    } else {
-                        event.preventDefault();
-                        console.error('Retour du serveur : ', response.status);
-                        alert('Erreur rencontrée : ' + response.status);
-
-
-                    };
-                }
                 post(sendTeddies);
+            } else {
+                alert("error formulaire");
             }
+
 
         });
 
