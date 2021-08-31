@@ -354,3 +354,36 @@ form button:hover {
     transition: 200ms linear;
     color: white;
 }
+
+
+/* responsive*/
+
+@media(min-width:1024px) {
+    .title-site {
+        margin-left: 2em;
+    }
+}
+
+@media(max-width: 426px) and (min-width:280px) {
+    .title-site {
+        line-height: inherit;
+    }
+    .product-article {
+        width: 380px;
+    }
+    #header_container {
+        display: inherit;
+    }
+    .header_nav {
+        justify-content: space-between;
+    }
+    .nav_footer {
+        margin-bottom: 1em;
+    }
+    .nav_reseaux {
+        margin-left: 0.5em;
+    }
+    .product-article select {
+        margin-top: 1em;
+    }
+}

@@ -107,7 +107,7 @@ function createProductTeddies(teddies) {
                     teddiesColor: select.value,
                     teddiesPrice: teddies[i].price,
                     quantity: 1,
-                    teddiesId: teddies[i]._id,
+                    teddiesId: teddies._id,
                 };
                 console.log(teddiesChoose);
 

@@ -315,7 +315,7 @@ function createBasketTeddies(teddies) {
                 // création du tableau products (id des oursons du panier)
                 let products = [];
                 for (storedTeddy of storedTeddies) {
-                    let productsId = storedTeddy.teddyId;
+                    let productsId = storedTeddy.teddiesId;
                     products.push((productsId));
                 }
                 console.log(products);
@@ -333,7 +333,7 @@ function createBasketTeddies(teddies) {
                     try {
                         let response = await fetch('http://localhost:3000/api/teddies/order', {
                             method: 'POST',
-                            body: JSON.stringify(data),
+                            body: JSON.stringify(contact),
                             headers: {
                                 'Content-Type': 'application/json'
                             }
@@ -342,7 +342,7 @@ function createBasketTeddies(teddies) {
                             let data = await response.json();
                             console.log(data.orderId);
                             localStorage.setItem("responseOrder", data.orderId);
-                            window.location.href = "confirmation.html"
+                            window.location = "./confirmation.html"
                             localStorage.removeItem("teddies-basket");
 
                         } else {
@@ -357,8 +357,6 @@ function createBasketTeddies(teddies) {
                 };
 
                 post(sendTeddies);
-            } else {
-                alert("error formulaire");
             }
 
 
