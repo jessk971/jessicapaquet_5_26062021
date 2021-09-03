@@ -139,7 +139,7 @@ function createBasketTeddies(teddies) {
         const inputFirstName = document.createElement('input');
         firstName.appendChild(inputFirstName);
         inputFirstName.setAttribute('type', 'text');
-        inputFirstName.setAttribute('class', 'name');
+        inputFirstName.setAttribute('class', 'name1');
         inputFirstName.name = "Prénom"
         inputFirstName.required = true;
 
@@ -163,7 +163,7 @@ function createBasketTeddies(teddies) {
         const inputLastName = document.createElement('input');
         lastName.appendChild(inputLastName);
         inputLastName.setAttribute('type', 'text');
-        inputLastName.setAttribute('class', 'name');
+        inputLastName.setAttribute('class', 'name2');
         inputLastName.name = "Nom"
         inputLastName.required = true;
 
@@ -192,7 +192,7 @@ function createBasketTeddies(teddies) {
         const inputAddress = document.createElement('input');
         address.appendChild(inputAddress);
         inputAddress.setAttribute('type', 'text');
-        inputAddress.setAttribute('class', 'name');
+        inputAddress.setAttribute('class', 'name3');
         inputAddress.name = "Adresse"
         inputAddress.required = true;
 
@@ -218,7 +218,7 @@ function createBasketTeddies(teddies) {
         const inputCity = document.createElement('input');
         city.appendChild(inputCity);
         inputCity.setAttribute('type', 'text');
-        inputCity.setAttribute('class', 'name');
+        inputCity.setAttribute('class', 'name4');
         inputCity.name = "Ville"
         inputCity.required = true;
 
@@ -248,7 +248,7 @@ function createBasketTeddies(teddies) {
         const inputZip = document.createElement('input');
         zip.appendChild(inputZip);
         inputZip.setAttribute('type', 'text');
-        inputZip.setAttribute('class', 'name');
+        inputZip.setAttribute('class', 'name5');
         inputZip.name = "Code Postal"
         inputZip.required = true;
 
@@ -271,7 +271,7 @@ function createBasketTeddies(teddies) {
         const inputMail = document.createElement('input');
         mail.appendChild(inputMail);
         inputMail.setAttribute('type', 'email');
-        inputMail.setAttribute('class', 'name');
+        inputMail.setAttribute('class', 'name6');
         inputMail.name = "Adresse mail"
         inputMail.required = true;
 
