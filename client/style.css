@@ -130,7 +130,6 @@ a {
     position: relative;
     cursor: pointer;
     text-align: center;
-    margin-right: 1em;
 }
 
 .product-article img {
@@ -362,12 +361,55 @@ form button:hover {
     color: white;
 }
 
+#validation-teddies {
+    text-align: center;
+}
+
+.return {
+    margin-bottom: 3em;
+    margin-top: 5em;
+    border-radius: 15px;
+    width: 150px;
+    height: 30px;
+    border: transparent;
+    font-weight: 750;
+    cursor: pointer;
+    box-shadow: 2px 2px 12px rgb(212 211 211);
+}
+
+.return:hover {
+    background: linear-gradient(to left, rgba(250, 211, 231), rgba(252, 226, 239), rgba(255, 255, 255));
+    color: white;
+    text-shadow: 2px 2px 9px rgb(188 188 188);
+    box-shadow: grey;
+}
+
+#validation-teddies img {
+    width: 200px
+}
+
+.valid h1 {
+    font-size: xx-large;
+    border-bottom: solid rgba(250, 211, 231) 6px;
+    padding-bottom: 0.5em;
+}
+
 
 /* responsive*/
+
+@media(max-width: 1441px) and (min-width: 1023px) {
+    .product-article {
+        margin-right: 1em;
+    }
+}
 
 @media(min-width:1024px) {
     .title-site {
         margin-left: 2em;
+    }
+    #teddies-basket {
+        margin-left: auto;
+        margin-right: auto;
     }
 }
 

@@ -103,11 +103,11 @@ function createProductTeddies(teddies) {
                 event.preventDefault();
 
                 let teddiesChoose = {
-                    teddiesName: teddies[i].name,
-                    teddiesColor: select.value,
-                    teddiesPrice: teddies[i].price,
+                    name: teddies[i].name,
+                    color: select.value,
+                    price: teddies[i].price,
                     quantity: 1,
-                    teddiesId: teddies._id,
+                    id: teddies[i]._id,
                 };
                 console.log(teddiesChoose);
 

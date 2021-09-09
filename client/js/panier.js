@@ -39,7 +39,7 @@ function createBasketTeddies(teddies) {
             const teddiesCart = document.createElement("p");
             aTeddy.appendChild(teddiesCart);
             teddiesCart.src = teddies[i].imageUrl;
-            teddiesCart.textContent = storedTeddy.quantity + " " + storedTeddy.teddiesName + " , " + storedTeddy.teddiesColor;
+            teddiesCart.textContent = storedTeddy.quantity + " " + storedTeddy.name + " , " + storedTeddy.color;
 
             const teddiesPrice = document.createElement('div');
             aTeddy.appendChild(teddiesPrice);
@@ -48,7 +48,7 @@ function createBasketTeddies(teddies) {
 
             const price = document.createElement('p');
             teddiesPrice.appendChild(price);
-            price.textContent = storedTeddy.teddiesPrice + "$"
+            price.textContent = storedTeddy.price + "$"
 
             // création bouton supprimer 
 
@@ -85,7 +85,7 @@ function createBasketTeddies(teddies) {
         // total de la commande 
         let totalPrice = []
         for (storedTeddy of storedTeddies) {
-            let article = storedTeddy.teddiesPrice;
+            let article = storedTeddy.price;
             totalPrice.push(article);
         };
         const reducer = (accumulator, currentValue) => accumulator + currentValue;
@@ -315,7 +315,7 @@ function createBasketTeddies(teddies) {
                 // création du tableau products (id des oursons du panier)
                 let products = [];
                 for (storedTeddy of storedTeddies) {
-                    let productsId = storedTeddy.teddiesId;
+                    let productsId = storedTeddy.id;
                     products.push((productsId));
                 }
                 console.log(products);
@@ -333,7 +333,10 @@ function createBasketTeddies(teddies) {
                     try {
                         let response = await fetch('http://localhost:3000/api/teddies/order', {
                             method: 'POST',
-                            body: JSON.stringify(contact),
+                            body: JSON.stringify({
+                                'contact': contact,
+                                'products': products,
+                            }),
                             headers: {
                                 'Content-Type': 'application/json'
                             }
