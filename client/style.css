@@ -204,6 +204,7 @@ img {
 
 .teddie-price {
     margin-top: 0.5em;
+    font-weight: 900;
 }
 
 .title-basket h2 {
@@ -291,7 +292,7 @@ p.total {
 
 .teddies_cart {
     padding-bottom: 1em;
-    margin-bottom: 1.5em;
+    margin-bottom: 5em;
     box-shadow: 2px 2px 12px rgb(212 211 211);
     border-radius: 20px;
 }
@@ -372,7 +373,7 @@ form button:hover {
     width: 150px;
     height: 30px;
     border: transparent;
-    font-weight: 750;
+    font-weight: 700;
     cursor: pointer;
     box-shadow: 2px 2px 12px rgb(212 211 211);
 }
@@ -381,7 +382,7 @@ form button:hover {
     background: linear-gradient(to left, rgba(250, 211, 231), rgba(252, 226, 239), rgba(255, 255, 255));
     color: white;
     text-shadow: 2px 2px 9px rgb(188 188 188);
-    box-shadow: grey;
+    box-shadow: 2px 2px 12px grey;
 }
 
 #validation-teddies img {
@@ -477,13 +478,13 @@ form button:hover {
     }
 }
 
-@media(min-width: 411px) {
+@media(max-width: 411px) {
     .product-article {
         width: 370px;
     }
 }
 
-@media(min-width: 375px) {
+@media(max-width: 375px) {
     .title-site h1 {
         font-size: 70px;
     }
