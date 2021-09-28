@@ -38,7 +38,6 @@ function createBasketTeddies(teddies) {
 
             const teddiesCart = document.createElement("p");
             aTeddy.appendChild(teddiesCart);
-            teddiesCart.src = teddies[i].imageUrl;
             teddiesCart.textContent = storedTeddy.quantity + " " + storedTeddy.name + " , " + storedTeddy.color;
 
             const teddiesPrice = document.createElement('div');

@@ -28,15 +28,12 @@ function createProductTeddies(teddies) {
     console.log(teddiesList)
     for (let i = 0; i < teddies.length; i++) {
 
-        let divParent = document.createElement("div");
+        let divParent = document.createElement("a");
+        divParent.href = "products.html?id=" + teddies[i]._id;
         divParentParent.appendChild(divParent);
-        divParent.classList.add("product-article");
+        divParent.classList.add("product-article", "article");
 
-        const productLink = document.createElement("a");
-        productLink.href = "products.html" + teddies[i]._id;
-        divParent.appendChild(productLink);
-        productLink.className = 'section_zoom';
-        productLink.setAttribute('title', "L'ourson " + teddies[i].name + " vous attend !");
+
 
         //images teddies//
 
@@ -57,86 +54,14 @@ function createProductTeddies(teddies) {
         titleTeddie.classList.add("title-product");
         titleTeddie.textContent = teddies[i].name;
 
+
         let descriptionTeddie = document.createElement("p");
         divCardProduct.appendChild(descriptionTeddie);
         descriptionTeddie.classList.add("product-description");
         descriptionTeddie.textContent = teddies[i].description;
-
-        //couleurs//
-        let colorsSelect = document.createElement("form");
-        divCardProduct.appendChild(colorsSelect);
-        colorsSelect.classList.add("colors-teddies");
-
-        let select = document.createElement("select");
-        colorsSelect.appendChild(select);
-        select.classList.add("choice-colors")
-        select.setAttribute('name', "Choix de couleurs de " + teddies[i].name);
-        select.setAttribute('id', "select-choice");
-
-        const colors = teddies[i].colors;
-
-        for (let i = 0; i < colors.length; i++) {
-            const selectOption = document.createElement('option');
-            select.appendChild(selectOption);
-            selectOption.textContent = colors[i];
-            selectOption.setAttribute("value", colors[i]);
-        }
+    };
 
 
 
-        //div prix et bouton//
 
-        let divSelectPrice = document.createElement("div");
-        divCardProduct.appendChild(divSelectPrice);
-        divSelectPrice.classList.add("select-price");
-
-        let teddiePrice = document.createElement("p");
-        divSelectPrice.appendChild(teddiePrice);
-        teddiePrice.classList.add("teddie-price");
-        teddiePrice.textContent = teddies[i].price + ' $';
-
-        let buttonBuy = document.createElement("a");
-        divSelectPrice.appendChild(buttonBuy);
-        buttonBuy.classList.add("btn");
-
-        let buttonBasketBuy = document.createElement("button");
-        buttonBuy.appendChild(buttonBasketBuy);
-        buttonBasketBuy.classList.add("product-btn");
-        buttonBasketBuy.textContent = "Ajouter au panier";
-
-
-        buttonBasketBuy.addEventListener('click', function(event) {
-                event.preventDefault();
-
-                let teddiesChoose = {
-                    name: teddies[i].name,
-                    color: select.value,
-                    price: teddies[i].price,
-                    quantity: 1,
-                    id: teddies[i]._id,
-                };
-                console.log(teddiesChoose);
-
-                let storedTeddies = JSON.parse(localStorage.getItem('teddies-basket'));
-                const teddiesColor = select.value;
-                if (storedTeddies == undefined) {
-                    storedTeddies = []
-                }
-
-                storedTeddies.push(teddiesChoose);
-                localStorage.setItem('teddies-basket', JSON.stringify(storedTeddies));
-                console.log(storedTeddies);
-
-                if (window.confirm(teddies[i].name + " " + teddiesColor + ' a bien été ajouté. Souhaitez vous consulter votre panier ?')) {
-                    window.location.href = "panier.html";
-                } else {
-                    window.location.href = "index.html";
-                }
-
-
-
-            }
-
-        );
-    }
 }
