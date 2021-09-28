@@ -32,6 +32,12 @@ function createProductTeddies(teddies) {
         divParentParent.appendChild(divParent);
         divParent.classList.add("product-article");
 
+        const productLink = document.createElement("a");
+        productLink.href = "products.html" + teddies[i]._id;
+        divParent.appendChild(productLink);
+        productLink.className = 'section_zoom';
+        productLink.setAttribute('title', "L'ourson " + teddies[i].name + " vous attend !");
+
         //images teddies//
 
         let imageTeddie = document.createElement("img");
